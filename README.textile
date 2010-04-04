@@ -1,0 +1,13 @@
+h1. TestDeclarative
+
+Simply adds a declarative test method syntax to test/unit.
+
+<pre>
+  require 'test-declarative'
+
+  class MyTest < Test::Unit::TestCase
+    test "your test description" do
+      # your test code
+    end  
+  end
+</pre>
