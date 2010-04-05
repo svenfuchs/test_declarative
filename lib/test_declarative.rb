@@ -17,10 +17,8 @@ module TestDeclarative
   end
 end
 
-class Module
-  include TestDeclarative
-end
+classes = [Module]
+classes << Test::Unit::TestCase     if defined?(Test::Unit::TestCase)
+classes << MiniTest::Unit::TestCase if defined?(MiniTest::Unit::TestCase)
 
-class Test::Unit::TestCase
-  include TestDeclarative
-end if defined?(Test::Unit::TestCase)
+classes.each { |c| c.send(:include, TestDeclarative) }
