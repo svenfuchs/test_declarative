@@ -17,4 +17,14 @@ targets.each do |target|
       end
     end
   end
+  
+  target.instance_eval do
+    alias :orig_test_methods :test_methods
+    
+    def test_methods
+      methods = orig_test_methods
+      methods.delete('test')
+      methods
+    end
+  end if target.respond_to?(:test_methods)
 end
