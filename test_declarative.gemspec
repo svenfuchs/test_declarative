@@ -10,7 +10,7 @@ Gem::Specification.new do |s|
   s.homepage     = 'http://github.com/svenfuchs/test_declarative'
   s.summary      = 'Simply adds a declarative test method syntax to test/unit'
   s.description  = 'Simply adds a declarative test method syntax to test/unit.'
-  s.files        = Dir['{lib/**/*,[A-Z]*}']
+  s.files        = Dir['{lib/**/*,test/**/*,[A-Z]*}']
 
   s.platform     = Gem::Platform::RUBY
   s.require_path = 'lib'
