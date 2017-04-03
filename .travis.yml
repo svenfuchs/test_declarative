@@ -30,8 +30,6 @@ matrix:
       gemfile: gemfiles/Gemfile.empty
     - rvm: ruby-head
       gemfile: gemfiles/Gemfile.empty
-    - rvm: rbx
-      gemfile: gemfiles/Gemfile.empty
     - rvm: jruby
       gemfile: gemfiles/Gemfile.empty
   allow_failures:
