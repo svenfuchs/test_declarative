@@ -3,7 +3,7 @@ h1. TestDeclarative
 Simply adds a declarative test method syntax to test/unit.
 
 <pre>
-  require 'test-declarative'
+  require 'test_declarative'
 
   class MyTest < Test::Unit::TestCase
     test "your test description" do
