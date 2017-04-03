@@ -1,6 +1,7 @@
 targets = [Module]
 targets << Test::Unit::TestCase     if defined?(Test::Unit::TestCase)
 targets << MiniTest::Unit::TestCase if defined?(MiniTest::Unit::TestCase)
+targets << Minitest::Test           if defined?(Minitest::Test)
 
 targets.each do |target|
   target.class_eval do
