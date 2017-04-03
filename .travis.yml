@@ -12,12 +12,31 @@ rvm:
   - 2.3.3
   - 2.4.1
   - ruby-head
-  - rbx
   - jruby
 
+gemfile:
+  - Gemfile
+  - gemfiles/Gemfile.minitest4
+  - gemfiles/Gemfile.unit-test
+  - gemfiles/Gemfile.empty
+
 matrix:
+  exclude:
+    - rvm: 2.2.6
+      gemfile: gemfiles/Gemfile.empty
+    - rvm: 2.3.3
+      gemfile: gemfiles/Gemfile.empty
+    - rvm: 2.4.1
+      gemfile: gemfiles/Gemfile.empty
+    - rvm: ruby-head
+      gemfile: gemfiles/Gemfile.empty
+    - rvm: rbx
+      gemfile: gemfiles/Gemfile.empty
+    - rvm: jruby
+      gemfile: gemfiles/Gemfile.empty
   allow_failures:
     - rvm: ruby-head
-    - rvm: rbx
     - rvm: jruby
+    # TODO fix this.
+    - gemfile: gemfiles/Gemfile.unit-test
   fast_finish: true
