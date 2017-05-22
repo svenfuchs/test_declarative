@@ -7,27 +7,24 @@ def gemfile_name
   File.basename(gemfile)
 end
 
-gemfile = gemfile_name
-case gemfile
+GEMFILE = gemfile_name
+case GEMFILE
 when 'Gemfile'
   # Minitest >= 5
   require 'minitest/autorun'
   TEST_CASE = Minitest::Test
   RUNNER = Minitest::Unit
-  MINITEST_5 = true
 when 'Gemfile.minitest4'
   # Minitest < 5
   require 'minitest/autorun'
   TEST_CASE = MiniTest::Unit::TestCase
   RUNNER = MiniTest::Unit
-  MINITEST_5 = false
 when 'Gemfile.unit-test'
   # Latest test-unit
   require 'test-unit'
   require 'test/unit/testresult'
   TEST_CASE = Test::Unit::TestCase
   RUNNER = Test::Unit::TestResult
-  MINITEST_5 = false
 when 'Gemfile.empty'
   # Test for stdlib minitest.
   # test-unit and minitest were removed from stdlib at Ruby 2.2.
@@ -35,7 +32,6 @@ when 'Gemfile.empty'
   require 'minitest/autorun'
   TEST_CASE = MiniTest::Unit::TestCase
   RUNNER = MiniTest::Unit
-  MINITEST_5 = false
 else
   raise "Unknown gemfile: #{gemfile}"
 end
@@ -50,11 +46,16 @@ class TestDeclarativeTest < TEST_CASE
   def test_adds_a_test_method
     called = false
     TEST_CASE.test('some test') { called = true }
-    case MINITEST_5
-    when false
-      TEST_CASE.new(:test_some_test).run(RUNNER.new) {}
-    when true
+    case GEMFILE
+    when 'Gemfile'
       TEST_CASE.new(:test_some_test).run {}
+    when 'Gemfile.unit-test'
+      # This module does not inherit unit test.
+      # It has already implemented from test unit v2.3.0.
+      # Run original test unit just in case.
+      TEST_CASE.new("test: some test").run(RUNNER.new) {}
+    else
+      TEST_CASE.new(:test_some_test).run(RUNNER.new) {}
     end
     assert called
   end
