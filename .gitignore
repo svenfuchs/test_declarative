@@ -1,2 +1,4 @@
 .bundle
 *.lock
+/gemfiles/vendor/
+/vendor
