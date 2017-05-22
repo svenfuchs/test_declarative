@@ -35,6 +35,4 @@ matrix:
   allow_failures:
     - rvm: ruby-head
     - rvm: jruby
-    # TODO fix this.
-    - gemfile: gemfiles/Gemfile.unit-test
   fast_finish: true

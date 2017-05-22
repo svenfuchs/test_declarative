@@ -4,6 +4,11 @@ targets << MiniTest::Unit::TestCase if defined?(MiniTest::Unit::TestCase)
 targets << Minitest::Test           if defined?(Minitest::Test)
 
 targets.each do |target|
+  if target.respond_to? :test
+    warn "test_declarative is deprecated for #{target}"
+    next
+  end
+
   target.class_eval do
     def test(name, &block)
       test_name = "test_#{name.gsub(/\s+/,'_')}".to_sym
