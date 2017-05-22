@@ -11,7 +11,8 @@ Gem::Specification.new do |s|
   s.license      = 'MIT'
   s.summary      = 'Simply adds a declarative test method syntax to test/unit'
   s.description  = 'Simply adds a declarative test method syntax to test/unit.'
-  s.files        = Dir['{lib/**/*,test/**/*,[A-Z]*}']
+  s.files        = `git ls-files -- lib/*`.split("\n")
+  s.files       += %w(README.md MIT-LICENSE)
 
   s.platform     = Gem::Platform::RUBY
   s.require_path = 'lib'
