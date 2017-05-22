@@ -8,6 +8,7 @@ Gem::Specification.new do |s|
   s.authors      = ['Sven Fuchs']
   s.email        = 'svenfuchs@artweb-design.de'
   s.homepage     = 'http://github.com/svenfuchs/test_declarative'
+  s.license      = 'MIT'
   s.summary      = 'Simply adds a declarative test method syntax to test/unit'
   s.description  = 'Simply adds a declarative test method syntax to test/unit.'
   s.files        = Dir['{lib/**/*,test/**/*,[A-Z]*}']
