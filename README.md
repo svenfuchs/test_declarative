@@ -1,6 +1,6 @@
 # TestDeclarative
 
-[![Build Status](https://api.travis-ci.org/svenfuchs/test_declarative.svg?branch=master)](https://travis-ci.org/svenfuchs/test_declarative)
+[![CI](https://github.com/svenfuchs/test_declarative/actions/workflows/ci.yml/badge.svg)](https://github.com/svenfuchs/test_declarative/actions/workflows/ci.yml)
 
 Simply adds a declarative test method syntax to test/unit.
 
