@@ -7,7 +7,7 @@ Gem::Specification.new do |s|
   s.version      = TestDeclarative::VERSION
   s.authors      = ['Sven Fuchs']
   s.email        = 'svenfuchs@artweb-design.de'
-  s.homepage     = 'http://github.com/svenfuchs/test_declarative'
+  s.homepage     = 'https://github.com/svenfuchs/test_declarative'
   s.license      = 'MIT'
   s.summary      = 'Simply adds a declarative test method syntax to test/unit'
   s.description  = 'Simply adds a declarative test method syntax to test/unit.'
