@@ -59,4 +59,34 @@ class TestDeclarativeTest < TEST_CASE
     end
     assert called
   end
+
+  # Run only if Minitest is required
+  if %w[Gemfile Gemfile.minitest4].include?(GEMFILE)
+    def test_do_not_print_deprecated_warnings
+      targets = []
+      targets << MiniTest::Unit::TestCase if defined?(MiniTest::Unit::TestCase)
+      targets << Minitest::Test           if defined?(Minitest::Test)
+      targets << Module
+      begin
+        targets.each do |target|
+          target.class_eval do
+            alias_method :orig_test, :test
+            undef :test
+          end
+        end
+
+        _out, err = capture_io do
+          load 'test_declarative.rb'
+        end
+        refute_includes err, 'test_declarative is deprecated for Minitest::Unit::TestCase'
+        refute_includes err, 'test_declarative is deprecated for Minitest::Test'
+      ensure
+        targets.each do |target|
+          target.class_eval do
+            alias_method :test, :orig_test unless target.respond_to?(:test)
+          end
+        end
+      end
+    end
+  end
 end

@@ -1,7 +1,8 @@
-targets = [Module]
+targets = []
 targets << Test::Unit::TestCase     if defined?(Test::Unit::TestCase)
 targets << MiniTest::Unit::TestCase if defined?(MiniTest::Unit::TestCase)
 targets << Minitest::Test           if defined?(Minitest::Test)
+targets << Module
 
 targets.each do |target|
   if target.respond_to? :test
