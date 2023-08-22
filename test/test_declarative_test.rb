@@ -13,7 +13,7 @@ when 'Gemfile'
   # Minitest >= 5
   require 'minitest/autorun'
   TEST_CASE = Minitest::Test
-  RUNNER = Minitest::Unit
+  RUNNER = Minitest::Test
 when 'Gemfile.minitest4'
   # Minitest < 5
   require 'minitest/autorun'
